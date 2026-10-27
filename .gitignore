@@ -1,0 +1,24 @@
+__pycache__/
+*.pyc
+.venv/
+.data/
+.DS_Store
+
+# Local credentials and generated data
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+*-media/
+uploads/
+*.log
+node_modules/
+.coverage
+.pytest_cache/
+dist/

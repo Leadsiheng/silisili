@@ -1,0 +1,10 @@
+const assert=require('node:assert/strict');
+const render=require('../silisili/static/markdown.js');
+assert.match(render('# 标题\n\n## 小节\n\n正文'), /<h1>标题<\/h1>[\s\S]*<h2>小节<\/h2>/);
+assert.match(render('```http\nGET /api/v1/manual\n```'), /<pre><code>GET \/api\/v1\/manual<\/code><\/pre>/);
+assert.match(render('- one\n- two\n\n1. first'), /<ul><li>one<\/li><li>two<\/li><\/ul>[\s\S]*<ol>/);
+assert.match(render('**bold** and `code`'), /<strong>bold<\/strong> and <code>code<\/code>/);
+assert.ok(!render('<script>alert(1)</script>').includes('<script>'));
+assert.ok(!render('[x](javascript:alert(1))').includes('href='));
+assert.match(render('[docs](https://example.com/?a=1&b=2)'), /href="https:\/\/example.com\/\?a=1&amp;b=2"/);
+console.log('Markdown rendering and unsafe-input checks passed.');
